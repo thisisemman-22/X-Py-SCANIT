@@ -2,11 +2,9 @@ from datetime import datetime
 import sqlite3
 import random
 import string
-from harrison_scanning import scan_barcode
 import json
 import qrcode
-from PIL import Image
-from flask import jsonify, request
+from flask import request
 
 store_id = "utangnginamo2024"
 
