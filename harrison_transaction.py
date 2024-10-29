@@ -7,7 +7,7 @@ import qrcode
 import os
 from flask import request
 
-store_id = "utangnginamo2024"
+store_id = "da_shop.X-Py"
 
 # --- TRANSACTION HANDLING ---
 def generate_transaction_id():
