@@ -4,6 +4,7 @@ import random
 import string
 import json
 import qrcode
+import os
 from flask import request
 
 store_id = "utangnginamo2024"
@@ -33,10 +34,11 @@ def generate_qr_code(transaction_id, total_amount, payment_method, reference_num
     qr.make(fit=True)
 
     img = qr.make_image(fill='black', back_color='white')
-    img.save(f"transaction_{transaction_id}.png")
-    img.show()
+    qr_code_path = os.path.join('static', 'qr_codes', f"transaction_{transaction_id}.png")
+    os.makedirs(os.path.dirname(qr_code_path), exist_ok=True)
+    img.save(qr_code_path)
 
-    return f"QR code generated and saved as transaction_{transaction_id}.png"
+    return f"/qr_code/transaction_{transaction_id}.png"
 
 def handle_transaction(cursor, conn):
     data = request.json
@@ -90,9 +92,20 @@ def handle_transaction(cursor, conn):
         if cash_received < total_amount:
             return {"error": "Insufficient cash"}, 400
         change = cash_received - total_amount
+        response = {
+            "message": "Transaction completed",
+            "total_amount": round(total_amount, 2),
+            "change": round(change, 2),
+            "payment_method": payment_method
+        }
     elif payment_method == 'qrph':
-        qr_code_message = generate_qr_code(transaction_id, total_amount, payment_method, items=items)
-        return {"message": qr_code_message}, 200
+        qr_code_path = generate_qr_code(transaction_id, total_amount, payment_method, items=items)
+        base_url = request.host_url.rstrip('/')
+        qr_code_url = f"{base_url}{qr_code_path}"
+        response = {
+            "message": "QR code generated",
+            "qr_code_url": qr_code_url
+        }
 
     transaction_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     items_json = json.dumps(items)
@@ -102,7 +115,7 @@ def handle_transaction(cursor, conn):
     ''', (transaction_id, total_amount, transaction_date, payment_method, reference_number, items_json))
     conn.commit()
 
-    return {"message": "Transaction completed", "total_amount": round(total_amount, 2), "change": round(change, 2), "payment_method": payment_method}, 200
+    return response, 200
 
 def generate_reports(cursor):
     today = datetime.now().strftime('%Y-%m-%d')
@@ -165,3 +178,24 @@ def sales_by_date(cursor):
     ''')
     sales = [{"date": date, "total_sales": round(total, 2)} for date, total in cursor.fetchall()]
     return sales
+
+def get_transactions_by_date(cursor, date):
+    """Retrieve transactions for a specific date."""
+    cursor.execute('''
+        SELECT transaction_id, total_amount, transaction_date, payment_method, items
+        FROM transactions
+        WHERE DATE(transaction_date) = ?
+    ''', (date,))
+    
+    transactions = cursor.fetchall()
+    transaction_list = [
+        {
+            "transaction_id": row[0],
+            "total_amount": row[1],
+            "transaction_date": row[2],
+            "payment_method": row[3],
+            "items": [item["product_name"] for item in json.loads(row[4]).values()]
+        }
+        for row in transactions
+    ]
+    return transaction_list

@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from harrison_database import connect_db, create_tables
 from harrison_inventory import add_product, update_stock, fetch_inventory
-from harrison_transaction import handle_transaction, generate_reports, notify_low_stock, total_sales, average_transaction_value, most_sold_products, sales_by_date
+from harrison_transaction import handle_transaction, generate_reports, notify_low_stock, total_sales, average_transaction_value, most_sold_products, sales_by_date, get_transactions_by_date
+from flask import send_from_directory
 import os
 
 app = Flask(__name__)
@@ -99,11 +100,26 @@ def sales_by_date_route():
     conn.close()  # Close the connection after the operation
     return jsonify(result), 200
 
+@app.route('/transactions_by_date', methods=['GET'])
+def transactions_by_date_route():
+    date = request.args.get('date')
+    if not date:
+        return jsonify({"error": "Date parameter is required"}), 400
+    
+    conn, cursor = connect_db()  # Create a new connection and cursor
+    transactions = get_transactions_by_date(cursor, date)
+    conn.close()  # Close the connection after the operation
+    return jsonify(transactions), 200
+
 @app.route('/exit', methods=['POST'])
 def exit_route():
     conn, cursor = connect_db()  # Create a new connection and cursor
     conn.close()
     return jsonify({"message": "Connection closed and program exited"}), 200
+
+@app.route('/qr_code/<filename>')
+def serve_qr_code(filename):
+    return send_from_directory(os.path.join(app.root_path, 'static', 'qr_codes'), filename)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
