@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from harrison_database import connect_db, create_tables
-from harrison_inventory import add_product, update_stock, fetch_inventory
+from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes
 from harrison_transaction import handle_transaction, generate_reports, notify_low_stock, total_sales, average_transaction_value, most_sold_products, sales_by_date, get_transactions_by_date
 from flask_cors import CORS
 import os
@@ -111,6 +111,23 @@ def transactions_by_date_route():
     transactions = get_transactions_by_date(cursor, date)
     conn.close()  # Close the connection after the operation
     return jsonify(transactions), 200
+
+@app.route('/get_product_names', methods=['POST'])
+def get_product_names_route():
+    conn, cursor = connect_db()  # Create a new connection and cursor
+    data = request.json
+    barcodes = data.get('barcodes')
+    if not barcodes:
+        return jsonify({"error": "Barcodes parameter is required"}), 400
+
+    result = get_product_names_by_barcodes(cursor, barcodes)
+    conn.close()  # Close the connection after the operation
+
+    if isinstance(result, dict) and 'error' in result:
+        return jsonify(result), 400
+
+    product_names = {barcode: name for barcode, name in result}
+    return jsonify(product_names), 200
 
 @app.route('/exit', methods=['POST'])
 def exit_route():

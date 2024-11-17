@@ -77,3 +77,15 @@ def add_quantity(cursor, conn, barcode, quantity):
         return {"error": f"Database error: {e}"}
     except Exception as e:
         return {"error": f"An unexpected error occurred: {e}"}
+
+def get_product_names_by_barcodes(cursor, barcodes):
+    """Fetch product names for the given barcodes."""
+    try:
+        cursor.execute('''
+            SELECT barcode, product_name FROM inventory WHERE barcode IN ({})
+        '''.format(','.join('?' * len(barcodes))), barcodes)
+        return cursor.fetchall()
+    except sqlite3.Error as e:
+        return {"error": f"Database error: {e}"}
+    except Exception as e:
+        return {"error": f"An unexpected error occurred: {e}"}
