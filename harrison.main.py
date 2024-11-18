@@ -126,7 +126,7 @@ def get_product_names_route():
     if isinstance(result, dict) and 'error' in result:
         return jsonify(result), 400
 
-    product_names = [name for barcode, name in result]
+    product_names = [name[0] for name in result]
     return jsonify(product_names), 200
 
 @app.route('/exit', methods=['POST'])
