@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from harrison_database import connect_db, create_tables
-from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes
+from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes, get_price_by_barcode
 from harrison_transaction import handle_transaction, generate_reports, notify_low_stock, total_sales, average_transaction_value, most_sold_products, sales_by_date, get_transactions_by_date
 from flask_cors import CORS
 import os
@@ -138,6 +138,19 @@ def exit_route():
 @app.route('/qr_code/<filename>')
 def serve_qr_code(filename):
     return send_from_directory(os.path.join(app.root_path, 'static', 'qr_codes'), filename)
+
+@app.route('/get_price', methods=['POST'])
+def get_price_route():
+    conn, cursor = connect_db()  # Create a new connection and cursor
+    data = request.json
+    barcode = data.get('barcode')
+    if not barcode:
+        return jsonify({"error": "Barcode parameter is required"}), 400
+
+    result = get_price_by_barcode(cursor, barcode)
+    conn.close()  # Close the connection after the operation
+
+    return jsonify(result), 200 if 'price' in result else 400
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

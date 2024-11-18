@@ -89,3 +89,19 @@ def get_product_names_by_barcodes(cursor, barcodes):
         return {"error": f"Database error: {e}"}
     except Exception as e:
         return {"error": f"An unexpected error occurred: {e}"}
+    
+def get_price_by_barcode(cursor, barcode):
+    """Fetch the price for the given barcode."""
+    try:
+        cursor.execute('''
+            SELECT price FROM inventory WHERE barcode = ?
+        ''', (barcode,))
+        result = cursor.fetchone()
+        if result:
+            return {"price": res            git add harrison_inventory.py harrison.main.pyult[0]}
+        else:
+            return {"error": "Product not found"}
+    except sqlite3.Error as e:
+        return {"error": f"Database error: {e}"}
+    except Exception as e:
+        return {"error": f"An unexpected error occurred: {e}"}
