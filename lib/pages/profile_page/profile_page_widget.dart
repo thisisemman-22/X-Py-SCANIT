@@ -2042,7 +2042,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                     title: const Text(
                                                                         'Log Out'),
                                                                     content: const Text(
-                                                                        'Do you want to log ou?'),
+                                                                        'Do you want to log out?'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed: () => Navigator.pop(

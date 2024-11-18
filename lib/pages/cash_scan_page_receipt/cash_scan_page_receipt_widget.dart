@@ -314,7 +314,7 @@ class _CashScanPageReceiptWidgetState extends State<CashScanPageReceiptWidget> {
                                                     ),
                                                   ]
                                                       .divide(const SizedBox(
-                                                          width: 168.0))
+                                                          width: 100.0))
                                                       .addToStart(
                                                           const SizedBox(width: 40.0))
                                                       .addToEnd(const SizedBox(
@@ -355,7 +355,7 @@ class _CashScanPageReceiptWidgetState extends State<CashScanPageReceiptWidget> {
                                                 formatType: FormatType.decimal,
                                                 decimalType:
                                                     DecimalType.automatic,
-                                                currency: '₱',
+                                                currency: 'P',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -402,7 +402,7 @@ class _CashScanPageReceiptWidgetState extends State<CashScanPageReceiptWidget> {
                                                 formatType: FormatType.decimal,
                                                 decimalType:
                                                     DecimalType.automatic,
-                                                currency: '₱',
+                                                currency: 'P',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)

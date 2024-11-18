@@ -124,7 +124,22 @@ class _CounterWidgetState extends State<CounterWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      Navigator.pop(context);
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: const Text('This action is not allowed. '),
+                            content: const Text('Please enter amount.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: const Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     text: 'CANCEL',
                     options: FFButtonOptions(

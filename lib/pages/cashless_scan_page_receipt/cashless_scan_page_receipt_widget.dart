@@ -318,7 +318,7 @@ class _CashlessScanPageReceiptWidgetState
                                                     ),
                                                   ]
                                                       .divide(const SizedBox(
-                                                          width: 168.0))
+                                                          width: 100.0))
                                                       .addToStart(
                                                           const SizedBox(width: 40.0))
                                                       .addToEnd(const SizedBox(
