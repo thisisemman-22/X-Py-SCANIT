@@ -70,7 +70,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                 child: Text(
                   'INVENTORY',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Open Sans',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -170,13 +170,14 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 30.0,
-                                                          letterSpacing: 0.0,
+                                                          letterSpacing: 1.0,
                                                           fontWeight:
                                                               FontWeight.bold,
+                                                          lineHeight: 1.0,
                                                         ),
                                               ),
                                             ),
@@ -231,7 +232,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Poppins',
                                                                 color: const Color(
                                                                     0xFF28292A),
                                                                 fontSize: 15.0,
@@ -240,6 +241,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
+                                                                lineHeight: 1.0,
                                                               ),
                                                         ),
                                                       ),
@@ -336,7 +338,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               const Color(0xFF02E083),
                                                                           fontSize:
@@ -407,7 +409,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
-                                                                                fontFamily: 'Inter',
+                                                                                fontFamily: 'Poppins',
                                                                                 color: FlutterFlowTheme.of(context).info,
                                                                                 fontSize: 20.0,
                                                                                 letterSpacing: 0.0,
@@ -454,7 +456,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                     .bodyMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Poppins',
                                                                       color: const Color(
                                                                           0xFF02E083),
                                                                       fontSize:
@@ -532,7 +534,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Inter',
+                                                                                'Poppins',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).info,
                                                                             fontSize:
@@ -589,7 +591,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: const Color(
                                                                             0xFF02E083),
                                                                         fontSize:
@@ -653,16 +655,23 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                                       return Text(
                                                                         valueOrDefault<
                                                                             String>(
-                                                                          TotalSalesCall
-                                                                              .totalSales(
-                                                                            textTotalSalesResponse.jsonBody,
-                                                                          )?.toString(),
+                                                                          formatNumber(
+                                                                            TotalSalesCall.totalSales(
+                                                                              textTotalSalesResponse.jsonBody,
+                                                                            ),
+                                                                            formatType:
+                                                                                FormatType.decimal,
+                                                                            decimalType:
+                                                                                DecimalType.automatic,
+                                                                            currency:
+                                                                                'P',
+                                                                          ),
                                                                           '0',
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
-                                                                              fontFamily: 'Inter',
+                                                                              fontFamily: 'Poppins',
                                                                               color: FlutterFlowTheme.of(context).info,
                                                                               fontSize: 20.0,
                                                                               letterSpacing: 0.0,
@@ -793,7 +802,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                           context)
                                                       .titleSmall
                                                       .override(
-                                                        fontFamily: 'Open Sans',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             const Color(0xFF02E083),
                                                         fontSize: 12.0,
@@ -906,8 +915,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                             context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Open Sans',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 12.0,
@@ -1028,8 +1036,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                             context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Open Sans',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 12.0,
@@ -1132,8 +1139,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                             context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Open Sans',
+                                                          fontFamily: 'Poppins',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 12.0,

@@ -93,6 +93,17 @@ class _MyAppState extends State<MyApp> {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
+              return const Color(0xff57636c);
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0xff57636c);
+            }
+            return const Color(0xff57636c);
+          }),
+        ),
         useMaterial3: false,
       ),
       themeMode: _themeMode,

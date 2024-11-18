@@ -54,7 +54,7 @@ class _CounterWidgetState extends State<CounterWidget> {
               Text(
                 'Select Quantity',
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Open Sans',
+                      fontFamily: 'Poppins',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -101,7 +101,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
-                                  fontFamily: 'Open Sans',
+                                  fontFamily: 'Poppins',
                                   fontSize: 30.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -128,6 +128,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                     },
                     text: 'CANCEL',
                     options: FFButtonOptions(
+                      width: 100.0,
                       height: 40.0,
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
@@ -136,7 +137,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                       color: const Color(0xFF02E083),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Open Sans',
+                                fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 letterSpacing: 0.0,
                               ),
@@ -153,6 +154,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                     },
                     text: 'CONFIRM',
                     options: FFButtonOptions(
+                      width: 100.0,
                       height: 40.0,
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
@@ -161,7 +163,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                       color: const Color(0xFF02E083),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Open Sans',
+                                fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 letterSpacing: 0.0,
                               ),
@@ -169,7 +171,10 @@ class _CounterWidgetState extends State<CounterWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                ],
+                ]
+                    .divide(const SizedBox(width: 20.0))
+                    .addToStart(const SizedBox(width: 10.0))
+                    .addToEnd(const SizedBox(width: 10.0)),
               ),
             ].divide(const SizedBox(height: 24.0)),
           ),

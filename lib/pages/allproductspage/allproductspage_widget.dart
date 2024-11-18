@@ -70,7 +70,7 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                 child: Text(
                   'PRODUCTS',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Open Sans',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -168,32 +168,28 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                                       context.pushNamed('updateStock');
                                     },
                                     child: Container(
-                                      width: 120.0,
+                                      width: 150.0,
+                                      height: 40.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF02E083),
                                         borderRadius:
-                                            BorderRadius.circular(20.0),
+                                            BorderRadius.circular(24.0),
                                       ),
                                       child: Align(
                                         alignment:
                                             const AlignmentDirectional(0.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: Text(
-                                            'Update Stock',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  color: const Color(0xFF28292A),
-                                                  fontSize: 15.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ),
+                                        child: Text(
+                                          'Update Stock',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: const Color(0xFF28292A),
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
                                         ),
                                       ),
                                     ),
@@ -213,11 +209,12 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                                           'inventory_view_all_add_item_page');
                                     },
                                     child: Container(
-                                      width: 120.0,
+                                      width: 150.0,
+                                      height: 40.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF02E083),
                                         borderRadius:
-                                            BorderRadius.circular(20.0),
+                                            BorderRadius.circular(24.0),
                                       ),
                                       child: Align(
                                         alignment:
@@ -231,11 +228,11 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF28292A),
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                           ),
                                         ),
@@ -246,7 +243,6 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                               ),
                             ]
                                 .divide(const SizedBox(width: 0.0))
-                                .addToStart(const SizedBox(width: 0.0))
                                 .addToEnd(const SizedBox(width: 0.0)),
                           ),
                         ),
@@ -286,6 +282,7 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                                           [];
 
                                   return RefreshIndicator(
+                                    color: FlutterFlowTheme.of(context).primary,
                                     onRefresh: () async {},
                                     child: ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -307,8 +304,7 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Open Sans',
+                                                          fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
@@ -325,19 +321,12 @@ class _AllproductspageWidgetState extends State<AllproductspageWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Poppins',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .alternate,
                                                           letterSpacing: 0.0,
                                                         ),
-                                              ),
-                                              trailing: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 20.0,
                                               ),
                                               tileColor: const Color(0xFF28292A),
                                               dense: false,

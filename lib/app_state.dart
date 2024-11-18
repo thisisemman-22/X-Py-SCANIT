@@ -183,4 +183,10 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInScannedQuantities(int index, int value) {
     scannedQuantities.insert(index, value);
   }
+
+  int _newUpdatedQuanti = 0;
+  int get newUpdatedQuanti => _newUpdatedQuanti;
+  set newUpdatedQuanti(int value) {
+    _newUpdatedQuanti = value;
+  }
 }

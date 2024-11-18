@@ -48,13 +48,13 @@ class _StartWidgetState extends State<StartWidget> {
                   alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 120.0, 0.0, 0.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.asset(
                         'assets/images/transparent_logo.gif',
-                        width: 100.0,
-                        height: 100.0,
+                        width: 130.0,
+                        height: 130.0,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -66,24 +66,23 @@ class _StartWidgetState extends State<StartWidget> {
                   alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 150.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 200.0),
                     child: Text(
                       'SCAN IT',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            fontSize: 20.0,
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                            fontSize: 30.0,
                             letterSpacing: 0.0,
-                            fontWeight: FontWeight.w800,
+                            fontWeight: FontWeight.bold,
                           ),
                     ),
                   ),
                 ),
               ),
               Container(
-                width: 320.0,
-                height: 197.0,
+                width: 300.0,
+                height: 200.0,
                 decoration: const BoxDecoration(
                   color: Color(0xFF28292A),
                 ),
@@ -95,13 +94,12 @@ class _StartWidgetState extends State<StartWidget> {
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Align(
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  65.0, 0.0, 5.0, 10.0),
+                                  25.0, 0.0, 0.0, 10.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -111,10 +109,11 @@ class _StartWidgetState extends State<StartWidget> {
                                   context.pushNamed('login_page');
                                 },
                                 child: Container(
-                                  height: 60.0,
+                                  width: 180.0,
+                                  height: 50.0,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFF02E083),
-                                    borderRadius: BorderRadius.circular(20.0),
+                                    borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   child: Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
@@ -126,10 +125,10 @@ class _StartWidgetState extends State<StartWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Poppins',
                                               fontSize: 17.0,
                                               letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w600,
                                             ),
                                       ),
                                     ),
@@ -143,7 +142,7 @@ class _StartWidgetState extends State<StartWidget> {
                               alignment: const AlignmentDirectional(1.0, 0.0),
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 65.0, 10.0),
+                                    0.0, 0.0, 25.0, 10.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -183,10 +182,10 @@ class _StartWidgetState extends State<StartWidget> {
                                     if (shouldSetState) safeSetState(() {});
                                   },
                                   child: Container(
-                                    height: 60.0,
+                                    height: 50.0,
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF02E083),
-                                      borderRadius: BorderRadius.circular(20.0),
+                                      borderRadius: BorderRadius.circular(24.0),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -205,38 +204,34 @@ class _StartWidgetState extends State<StartWidget> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 0.0, 0.0, 100.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('login_create_new_page');
-                          },
-                          child: Container(
-                            width: 200.0,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF02E083),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                'CREATE ACCOUNT',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      color: const Color(0xFF28292A),
-                                      fontSize: 17.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('login_create_new_page');
+                        },
+                        child: Container(
+                          width: 250.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF02E083),
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              'CREATE ACCOUNT',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: const Color(0xFF28292A),
+                                    fontSize: 17.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             ),
                           ),
                         ),

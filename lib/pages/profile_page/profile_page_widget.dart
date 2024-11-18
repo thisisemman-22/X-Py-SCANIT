@@ -74,7 +74,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 child: Text(
                   'PROFILE',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Open Sans',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -232,7 +232,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFF02E083),
                                                                     fontSize:
@@ -267,7 +267,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Poppins',
                                                                     color: const Color(
                                                                         0xFFC4CBD0),
                                                                     fontSize:
@@ -342,7 +342,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
@@ -452,7 +452,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -517,7 +517,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -583,11 +583,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
-                                                                              16.0,
+                                                                              14.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -648,7 +648,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -714,7 +714,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -780,7 +780,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Poppins',
                                                                           color:
                                                                               Colors.white,
                                                                           fontSize:
@@ -820,7 +820,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: Colors.white,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
@@ -876,7 +876,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
@@ -968,7 +968,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1016,7 +1016,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1131,7 +1131,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
@@ -1224,7 +1224,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1311,7 +1311,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1398,7 +1398,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1513,7 +1513,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
@@ -1577,7 +1577,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1693,7 +1693,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
@@ -1757,7 +1757,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Inter',
+                                                                            'Poppins',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -1873,7 +1873,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 15.0,
                                                         letterSpacing: 0.0,
@@ -1999,7 +1999,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Poppins',
                                                         color: Colors.white,
                                                         fontSize: 15.0,
                                                         letterSpacing: 0.0,

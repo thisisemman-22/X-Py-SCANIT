@@ -174,17 +174,17 @@ class _TransactionOverviewPageWidgetState
             backgroundColor: const Color(0xFF717171),
             automaticallyImplyLeading: false,
             leading: Align(
-              alignment: const AlignmentDirectional(0.0, 10.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(40.0, 15.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 0.0, 0.0),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 8.0,
-                  buttonSize: 100.0,
+                  buttonSize: 60.0,
                   icon: Icon(
                     Icons.person_outline_rounded,
                     color: FlutterFlowTheme.of(context).info,
-                    size: 30.0,
+                    size: 32.0,
                   ),
                   onPressed: () async {
                     context.pushNamed('profile_page');
@@ -195,11 +195,12 @@ class _TransactionOverviewPageWidgetState
             title: Align(
               alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: Text(
                   'OVERVIEW',
+                  textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Open Sans',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -209,11 +210,11 @@ class _TransactionOverviewPageWidgetState
             ),
             actions: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 10.0, 0.0),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 8.0,
-                  buttonSize: 40.0,
+                  buttonSize: 60.0,
                   icon: FaIcon(
                     FontAwesomeIcons.solidBell,
                     color: FlutterFlowTheme.of(context).info,
@@ -245,6 +246,7 @@ class _TransactionOverviewPageWidgetState
               child: Container(),
             ),
             centerTitle: false,
+            toolbarHeight: 90.0,
             elevation: 2.0,
           ),
         ),
@@ -360,22 +362,22 @@ class _TransactionOverviewPageWidgetState
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   fontSize: 22.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w800,
+                                  fontWeight: FontWeight.bold,
                                 ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 10.0, 16.0, 0.0),
+                            16.0, 0.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 120.0,
+                          height: 100.0,
                           decoration: BoxDecoration(
                             color: const Color(0xFF717171),
                             boxShadow: const [
@@ -411,65 +413,59 @@ class _TransactionOverviewPageWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 24.0,
+                                              fontSize: 22.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 0.0),
-                                        child: FutureBuilder<ApiCallResponse>(
-                                          future: AverageTransactionValueCall
-                                              .call(),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
+                                      FutureBuilder<ApiCallResponse>(
+                                        future:
+                                            AverageTransactionValueCall.call(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
                                                   ),
                                                 ),
-                                              );
-                                            }
-                                            final textAverageTransactionValueResponse =
-                                                snapshot.data!;
-
-                                            return Text(
-                                              formatNumber(
-                                                AverageTransactionValueCall
-                                                    .aveTransactionValue(
-                                                  textAverageTransactionValueResponse
-                                                      .jsonBody,
-                                                ),
-                                                formatType: FormatType.decimal,
-                                                decimalType:
-                                                    DecimalType.automatic,
-                                                currency: 'P',
                                               ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .headlineLarge
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: const Color(0xFF02E083),
-                                                    fontSize: 22.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
                                             );
-                                          },
-                                        ),
+                                          }
+                                          final textAverageTransactionValueResponse =
+                                              snapshot.data!;
+
+                                          return Text(
+                                            formatNumber(
+                                              AverageTransactionValueCall
+                                                  .aveTransactionValue(
+                                                textAverageTransactionValueResponse
+                                                    .jsonBody,
+                                              ),
+                                              formatType: FormatType.decimal,
+                                              decimalType:
+                                                  DecimalType.automatic,
+                                              currency: 'P',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineLarge
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: const Color(0xFF02E083),
+                                                  fontSize: 26.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          );
+                                        },
                                       ),
                                     ],
                                   ).animateOnPageLoad(animationsMap[
@@ -491,12 +487,12 @@ class _TransactionOverviewPageWidgetState
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   fontSize: 22.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w800,
+                                  fontWeight: FontWeight.bold,
                                 ),
                           ),
                         ),
@@ -530,25 +526,25 @@ class _TransactionOverviewPageWidgetState
                               return ListView.separated(
                                 padding: const EdgeInsets.fromLTRB(
                                   0,
-                                  20.0,
+                                  10.0,
                                   0,
-                                  20.0,
+                                  10.0,
                                 ),
                                 primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: salesTotal.length,
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 20.0),
+                                    const SizedBox(height: 10.0),
                                 itemBuilder: (context, salesTotalIndex) {
                                   final salesTotalItem =
                                       salesTotal[salesTotalIndex];
                                   return Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
+                                        10.0, 0.0, 10.0, 0.0),
                                     child: Container(
-                                      width: double.infinity,
-                                      height: 150.0,
+                                      width: 0.0,
+                                      height: 110.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
                                         boxShadow: const [
@@ -593,63 +589,50 @@ class _TransactionOverviewPageWidgetState
                                                               FontWeight.w500,
                                                         ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        SalesByDateCall.date(
-                                                          listViewSalesByDateResponse
-                                                              .jsonBody,
-                                                        )?[salesTotalIndex],
-                                                        '2024-06-09',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      SalesByDateCall.date(
+                                                        listViewSalesByDateResponse
+                                                            .jsonBody,
+                                                      )?[salesTotalIndex],
+                                                      '2024-06-09',
                                                     ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      formatNumber(
-                                                        salesTotalItem,
-                                                        formatType:
-                                                            FormatType.decimal,
-                                                        decimalType: DecimalType
-                                                            .automatic,
-                                                        currency: 'P',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Outfit',
-                                                            color: const Color(
-                                                                0xFF02E083),
-                                                            fontSize: 32.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
+                                                  Text(
+                                                    formatNumber(
+                                                      salesTotalItem,
+                                                      formatType:
+                                                          FormatType.decimal,
+                                                      decimalType:
+                                                          DecimalType.automatic,
+                                                      currency: 'P',
                                                     ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              const Color(0xFF02E083),
+                                                          fontSize: 26.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
                                                 ],
                                               ).animateOnPageLoad(animationsMap[
@@ -677,7 +660,7 @@ class _TransactionOverviewPageWidgetState
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   fontSize: 22.0,
@@ -737,7 +720,7 @@ class _TransactionOverviewPageWidgetState
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 120.0,
+                                      height: 110.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
                                         boxShadow: const [
@@ -781,59 +764,45 @@ class _TransactionOverviewPageWidgetState
                                                               FontWeight.w500,
                                                         ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Amount Sold',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Outfit',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                    ),
+                                                  Text(
+                                                    'Amount Sold',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        (MostSoldProductsCall
-                                                                .amountSold(
-                                                          listViewMostSoldProductsResponse
-                                                              .jsonBody,
-                                                        )?[salesTotalIndex])
-                                                            ?.toString(),
-                                                        '0',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Outfit',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                            fontSize: 22.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      (MostSoldProductsCall
+                                                              .amountSold(
+                                                        listViewMostSoldProductsResponse
+                                                            .jsonBody,
+                                                      )?[salesTotalIndex])
+                                                          ?.toString(),
+                                                      '0',
                                                     ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          fontSize: 26.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
                                                 ],
                                               ).animateOnPageLoad(animationsMap[

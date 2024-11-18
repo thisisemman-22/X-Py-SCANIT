@@ -80,7 +80,7 @@ class _ForgetPasswordPageVerificationWidgetState
                           'verification code',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class _ForgetPasswordPageVerificationWidgetState
                           'new password',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     fontSize: 17.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -154,7 +154,7 @@ class _ForgetPasswordPageVerificationWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Poppins',
                                       color: const Color(0xFF28292A),
                                       fontSize: 15.0,
                                       letterSpacing: 0.0,

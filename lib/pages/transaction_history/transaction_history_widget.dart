@@ -72,7 +72,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                 child: Text(
                   'HISTORY',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Open Sans',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -161,7 +161,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  fontFamily: 'Poppins',
                                                   color: const Color(0xFF02E083),
                                                   fontSize: 20.0,
                                                   letterSpacing: 0.0,
@@ -198,7 +198,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                               .headlineLarge
                                                               .override(
                                                                 fontFamily:
-                                                                    'Open Sans',
+                                                                    'Poppins',
                                                                 fontSize: 32.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -253,17 +253,16 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color: const Color(0xFF02E083),
-                                                textStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Open Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .primaryText,
-                                                      letterSpacing: 0.0,
-                                                    ),
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                 elevation: 0.0,
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),

@@ -67,9 +67,9 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Text(
-                  'SCAN',
+                  'HOME',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Open Sans',
+                        fontFamily: 'Poppins',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -123,10 +123,9 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 400.0, 0.0, 150.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 125.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -143,8 +142,8 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                               context.pushNamed('copy_scan_page_transaction');
                             },
                             child: Container(
-                              width: 140.0,
-                              height: 60.0,
+                              width: 300.0,
+                              height: 50.0,
                               decoration: BoxDecoration(
                                 color: const Color(0xFF02E083),
                                 borderRadius: BorderRadius.circular(20.0),
@@ -158,11 +157,11 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Poppins',
                                         color: const Color(0xFF28292A),
-                                        fontSize: 15.0,
+                                        fontSize: 18.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                 ),
                               ),
@@ -180,49 +179,47 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Flexible(
-                      child: Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onLongPress: () async {
-                            context.pushNamed('paycon_page');
-                          },
-                          child: Container(
-                            width: 140.0,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onLongPress: () async {
+                          context.pushNamed('paycon_page');
+                        },
+                        child: Container(
+                          width: 140.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Align(
                             alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                'PAYCON',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      color: const Color(0xFF28292A),
-                                      fontSize: 15.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
+                            child: Text(
+                              'PAYCON',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: const Color(0xFF28292A),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             ),
                           ),
                         ),
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(1.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -233,7 +230,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                         },
                         child: Container(
                           width: 140.0,
-                          height: 60.0,
+                          height: 50.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -247,11 +244,11 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Poppins',
                                     color: const Color(0xFF28292A),
-                                    fontSize: 15.0,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                   ),
                             ),
                           ),
@@ -259,7 +256,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                       ),
                     ),
                   ]
-                      .divide(const SizedBox(width: 0.0))
+                      .divide(const SizedBox(width: 10.0))
                       .addToStart(const SizedBox(width: 40.0))
                       .addToEnd(const SizedBox(width: 40.0)),
                 ),
@@ -363,8 +360,8 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
                       'assets/images/transparent_logo.gif',
-                      width: 200.0,
-                      height: 200.0,
+                      width: 130.0,
+                      height: 130.0,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -373,14 +370,15 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
               Align(
                 alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 250.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 200.0, 0.0, 0.0),
                   child: Text(
-                    'Welcome, USER!',
+                    'SCAN IT',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           color: FlutterFlowTheme.of(context).alternate,
                           fontSize: 22.0,
                           letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
                         ),
                   ),
                 ),
