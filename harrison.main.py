@@ -139,18 +139,21 @@ def exit_route():
 def serve_qr_code(filename):
     return send_from_directory(os.path.join(app.root_path, 'static', 'qr_codes'), filename)
 
-@app.route('/get_price', methods=['POST'])
-def get_price_route():
+@app.route('/get_prices', methods=['POST'])
+def get_prices_route():
     conn, cursor = connect_db()  # Create a new connection and cursor
     data = request.json
-    barcode = data.get('barcode')
-    if not barcode:
-        return jsonify({"error": "Barcode parameter is required"}), 400
+    barcodes = data.get('barcodes')
+    if not barcodes:
+        return jsonify({"error": "Barcodes parameter is required"}), 400
 
-    result = get_price_by_barcode(cursor, barcode)
+    result = get_prices_by_barcodes(cursor, barcodes)
     conn.close()  # Close the connection after the operation
 
-    return jsonify(result), 200 if 'price' in result else 400
+    if isinstance(result, dict) and 'error' in result:
+        return jsonify(result), 400
+
+    return jsonify(result), 200
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

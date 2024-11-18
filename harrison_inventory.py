@@ -90,17 +90,17 @@ def get_product_names_by_barcodes(cursor, barcodes):
     except Exception as e:
         return {"error": f"An unexpected error occurred: {e}"}
     
-def get_price_by_barcode(cursor, barcode):
-    """Fetch the price for the given barcode."""
+def get_prices_by_barcodes(cursor, barcodes):
+    """Fetch prices for the given barcodes."""
     try:
         cursor.execute('''
-            SELECT price FROM inventory WHERE barcode = ?
-        ''', (barcode,))
-        result = cursor.fetchone()
-        if result:
-            return {"price": result[0]}
+            SELECT barcode, price FROM inventory WHERE barcode IN ({})
+        '''.format(','.join('?' * len(barcodes))), barcodes)
+        results = cursor.fetchall()
+        if results:
+            return [{"barcode": barcode, "price": price} for barcode, price in results]
         else:
-            return {"error": "Product not found"}
+            return {"error": "No products found for the given barcodes"}
     except sqlite3.Error as e:
         return {"error": f"Database error: {e}"}
     except Exception as e:
