@@ -47,22 +47,25 @@ def handle_transaction(cursor, conn):
     reference_number = None
     items = {}
 
-    for item in data.get('items', []):
-        barcode = item.get('barcode')
-        quantity = item.get('quantity')
+    barcodes = data.get('barcodes')
+    quantities = data.get('quantities')
 
+    if not barcodes or not quantities or len(barcodes) != len(quantities):
+        return {"error": "Barcodes and quantities must be provided and must have the same length"}, 400
+
+    for barcode, quantity in zip(barcodes, quantities):
         cursor.execute('''
             SELECT product_name, stock, price, barcode FROM inventory WHERE barcode = ?
         ''', (barcode,))
         product = cursor.fetchone()
 
         if not product:
-            return {"error": "Product not found"}, 404
+            return {"error": f"Product with barcode {barcode} not found"}, 404
 
         product_name, stock, price, barcode = product
 
         if quantity > stock:
-            return {"error": "Insufficient stock"}, 400
+            return {"error": f"Insufficient stock for product {product_name}"}, 400
 
         new_stock = stock - quantity
         cursor.execute('''
