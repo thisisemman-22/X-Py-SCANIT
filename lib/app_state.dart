@@ -165,4 +165,22 @@ class FFAppState extends ChangeNotifier {
   set singleChange(double value) {
     _singleChange = value;
   }
+
+  String _num1 = '';
+  String get num1 => _num1;
+  set num1(String value) {
+    _num1 = value;
+  }
+
+  String _num2 = '';
+  String get num2 => _num2;
+  set num2(String value) {
+    _num2 = value;
+  }
+
+  String _answer = '';
+  String get answer => _answer;
+  set answer(String value) {
+    _answer = value;
+  }
 }

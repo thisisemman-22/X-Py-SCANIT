@@ -32,4 +32,3 @@ export '/pages/cash_scan_page_receipt/cash_scan_page_receipt_widget.dart'
     show CashScanPageReceiptWidget;
 export '/pages/cashless_scan_page_receipt/cashless_scan_page_receipt_widget.dart'
     show CashlessScanPageReceiptWidget;
-export '/test/test_widget.dart' show TestWidget;

@@ -181,11 +181,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'CashlessScanPageReceipt',
           path: '/cashlessScanPageReceipt',
           builder: (context, params) => const CashlessScanPageReceiptWidget(),
-        ),
-        FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => const TestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
