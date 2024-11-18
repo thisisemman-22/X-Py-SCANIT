@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from harrison_database import connect_db, create_tables
-from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes, get_price_by_barcode
+from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes, get_prices_by_barcodes
 from harrison_transaction import handle_transaction, generate_reports, notify_low_stock, total_sales, average_transaction_value, most_sold_products, sales_by_date, get_transactions_by_date
 from flask_cors import CORS
 import os
