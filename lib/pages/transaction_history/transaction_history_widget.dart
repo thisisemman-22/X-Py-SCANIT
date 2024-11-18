@@ -72,7 +72,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                 child: Text(
                   'HISTORY',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Open Sans',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -198,7 +198,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                               .headlineLarge
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter Tight',
+                                                                    'Open Sans',
                                                                 fontSize: 32.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -257,7 +257,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                         context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily: 'Inter Tight',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)

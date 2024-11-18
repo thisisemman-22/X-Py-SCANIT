@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -147,26 +148,25 @@ class NotifyLowStockCall {
           .toList();
 }
 
-class CashlessTransactionOneCall {
+class CashlessTransactionCall {
   static Future<ApiCallResponse> call({
-    String? barcode = '',
-    int? quantity,
+    List<String>? barcodeList,
+    List<int>? quantityList,
     String? paymentMethod = 'qrph',
     String? cashReceived = 'done',
   }) async {
+    final barcode = _serializeList(barcodeList);
+    final quantity = _serializeList(quantityList);
+
     final ffApiRequestBody = '''
 {
-  "items": [
-    {
-      "barcode": "$barcode",
-      "quantity": $quantity
-    }
-  ],
+  "barcodes": $barcode,
+  "quantities": $quantity,
   "payment_method": "$paymentMethod",
   "cash_received": "$cashReceived"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'Cashless Transaction One',
+      callName: 'Cashless Transaction',
       apiUrl:
           'https://scanit-xpy-bb31e6546436.herokuapp.com/handle_transaction',
       callType: ApiCallType.POST,
@@ -439,19 +439,18 @@ class AverageTransactionValueCall {
 
 class CashTransactionOneCall {
   static Future<ApiCallResponse> call({
-    String? barcode = '',
-    int? quantity,
+    List<String>? barcodeList,
+    List<int>? quantityList,
     String? paymentMethod = 'cash',
     double? cashReceived,
   }) async {
+    final barcode = _serializeList(barcodeList);
+    final quantity = _serializeList(quantityList);
+
     final ffApiRequestBody = '''
 {
-  "items": [
-    {
-      "barcode": "${escapeStringForJson(barcode)}",
-      "quantity": $quantity
-    }
-  ],
+  "barcodes": $barcode,
+  "quantities": $quantity,
   "payment_method": "${escapeStringForJson(paymentMethod)}",
   "cash_received": $cashReceived
 }''';
@@ -495,13 +494,13 @@ class CashTransactionOneCall {
 
 class GetNamesFromBarcodeCall {
   static Future<ApiCallResponse> call({
-    String? barcode = '',
+    List<String>? barcodeList,
   }) async {
+    final barcode = _serializeList(barcodeList);
+
     final ffApiRequestBody = '''
 {
-  "barcodes": [
-    "${escapeStringForJson(barcode)}"
-  ]
+  "barcodes": $barcode
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Names from Barcode',
@@ -520,7 +519,7 @@ class GetNamesFromBarcodeCall {
     );
   }
 
-  static List<String>? productName(dynamic response) => (getJsonField(
+  static List<String>? productNames(dynamic response) => (getJsonField(
         response,
         r'''$''',
         true,
@@ -529,6 +528,90 @@ class GetNamesFromBarcodeCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+}
+
+class GetPriceFromBarcodeCall {
+  static Future<ApiCallResponse> call({
+    List<String>? barcodeList,
+  }) async {
+    final barcode = _serializeList(barcodeList);
+
+    final ffApiRequestBody = '''
+{
+  "barcodes": $barcode
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Price from Barcode',
+      apiUrl: 'https://scanit-xpy-bb31e6546436.herokuapp.com/get_prices',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<String>? barcode(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].barcode''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<double>? respectivePrices(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].price''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+}
+
+class CalculateTotalCall {
+  static Future<ApiCallResponse> call({
+    List<String>? barcodesList,
+    List<int>? quantitiesList,
+  }) async {
+    final barcodes = _serializeList(barcodesList);
+    final quantities = _serializeList(quantitiesList);
+
+    final ffApiRequestBody = '''
+{
+  "barcodes": $barcodes,
+  "quantities": $quantities
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Calculate Total',
+      apiUrl: 'https://scanit-xpy-bb31e6546436.herokuapp.com/calculate_total',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static double? totalAmount(dynamic response) =>
+      castToType<double>(getJsonField(
+        response,
+        r'''$.total_amount''',
+      ));
 }
 
 class ApiPagingParams {

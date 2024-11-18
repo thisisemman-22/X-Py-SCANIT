@@ -75,7 +75,7 @@ class _CashlessScanPageTransactionReceiptPaymentCopyWidgetState
                 child: Text(
                   'SCAN',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Open Sans',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -270,6 +270,10 @@ class _CashlessScanPageTransactionReceiptPaymentCopyWidgetState
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            FFAppState().scannedBarcodes = [];
+                                            FFAppState().scannedQuantities = [];
+                                            safeSetState(() {});
+
                                             context.goNamed('scan_page');
                                           },
                                           child: Container(

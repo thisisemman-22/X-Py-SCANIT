@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
@@ -127,11 +129,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const LoginCreateNewPageWidget(),
         ),
         FFRoute(
-          name: 'scan_page_transaction',
-          path: '/scanPageTransaction',
-          builder: (context, params) => const ScanPageTransactionWidget(),
-        ),
-        FFRoute(
           name: 'sync_page',
           path: '/syncPage',
           builder: (context, params) => const SyncPageWidget(),
@@ -181,6 +178,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'CashlessScanPageReceipt',
           path: '/cashlessScanPageReceipt',
           builder: (context, params) => const CashlessScanPageReceiptWidget(),
+        ),
+        FFRoute(
+          name: 'copy_scan_page_transaction',
+          path: '/copyScanPageTransaction',
+          builder: (context, params) => const CopyScanPageTransactionWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -299,6 +301,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -316,6 +319,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }

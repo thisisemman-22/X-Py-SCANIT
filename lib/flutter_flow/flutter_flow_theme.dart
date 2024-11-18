@@ -159,65 +159,65 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Inter Tight';
+  String get displayLargeFamily => 'Open Sans';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 64.0,
       );
-  String get displayMediumFamily => 'Inter Tight';
+  String get displayMediumFamily => 'Open Sans';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 44.0,
       );
-  String get displaySmallFamily => 'Inter Tight';
+  String get displaySmallFamily => 'Open Sans';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Inter Tight';
+  String get headlineLargeFamily => 'Open Sans';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Inter Tight';
+  String get headlineMediumFamily => 'Open Sans';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Inter Tight';
+  String get headlineSmallFamily => 'Open Sans';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Inter Tight';
+  String get titleLargeFamily => 'Open Sans';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
-  String get titleMediumFamily => 'Inter Tight';
+  String get titleMediumFamily => 'Open Sans';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Inter Tight';
+  String get titleSmallFamily => 'Open Sans';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Open Sans',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 16.0,

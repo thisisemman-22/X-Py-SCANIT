@@ -13,8 +13,6 @@ export '/pages/forget_password_page_verification/forget_password_page_verificati
     show ForgetPasswordPageVerificationWidget;
 export '/pages/login_create_new_page/login_create_new_page_widget.dart'
     show LoginCreateNewPageWidget;
-export '/pages/scan_page_transaction/scan_page_transaction_widget.dart'
-    show ScanPageTransactionWidget;
 export '/pages/sync_page/sync_page_widget.dart' show SyncPageWidget;
 export '/pages/paycon_page/paycon_page_widget.dart' show PayconPageWidget;
 export '/pages/cashless_scan_page_transaction_receipt_payment_copy/cashless_scan_page_transaction_receipt_payment_copy_widget.dart'
@@ -32,3 +30,5 @@ export '/pages/cash_scan_page_receipt/cash_scan_page_receipt_widget.dart'
     show CashScanPageReceiptWidget;
 export '/pages/cashless_scan_page_receipt/cashless_scan_page_receipt_widget.dart'
     show CashlessScanPageReceiptWidget;
+export '/pages/copy_scan_page_transaction/copy_scan_page_transaction_widget.dart'
+    show CopyScanPageTransactionWidget;

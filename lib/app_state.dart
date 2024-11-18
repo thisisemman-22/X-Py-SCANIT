@@ -20,64 +20,6 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<String> _scannedItemsList = [];
-  List<String> get scannedItemsList => _scannedItemsList;
-  set scannedItemsList(List<String> value) {
-    _scannedItemsList = value;
-  }
-
-  void addToScannedItemsList(String value) {
-    scannedItemsList.add(value);
-  }
-
-  void removeFromScannedItemsList(String value) {
-    scannedItemsList.remove(value);
-  }
-
-  void removeAtIndexFromScannedItemsList(int index) {
-    scannedItemsList.removeAt(index);
-  }
-
-  void updateScannedItemsListAtIndex(
-    int index,
-    String Function(String) updateFn,
-  ) {
-    scannedItemsList[index] = updateFn(_scannedItemsList[index]);
-  }
-
-  void insertAtIndexInScannedItemsList(int index, String value) {
-    scannedItemsList.insert(index, value);
-  }
-
-  List<String> _inventoryList = [];
-  List<String> get inventoryList => _inventoryList;
-  set inventoryList(List<String> value) {
-    _inventoryList = value;
-  }
-
-  void addToInventoryList(String value) {
-    inventoryList.add(value);
-  }
-
-  void removeFromInventoryList(String value) {
-    inventoryList.remove(value);
-  }
-
-  void removeAtIndexFromInventoryList(int index) {
-    inventoryList.removeAt(index);
-  }
-
-  void updateInventoryListAtIndex(
-    int index,
-    String Function(String) updateFn,
-  ) {
-    inventoryList[index] = updateFn(_inventoryList[index]);
-  }
-
-  void insertAtIndexInInventoryList(int index, String value) {
-    inventoryList.insert(index, value);
-  }
-
   String _qrCodeURL = '';
   String get qrCodeURL => _qrCodeURL;
   set qrCodeURL(String value) {
@@ -182,5 +124,63 @@ class FFAppState extends ChangeNotifier {
   String get answer => _answer;
   set answer(String value) {
     _answer = value;
+  }
+
+  List<String> _scannedBarcodes = [];
+  List<String> get scannedBarcodes => _scannedBarcodes;
+  set scannedBarcodes(List<String> value) {
+    _scannedBarcodes = value;
+  }
+
+  void addToScannedBarcodes(String value) {
+    scannedBarcodes.add(value);
+  }
+
+  void removeFromScannedBarcodes(String value) {
+    scannedBarcodes.remove(value);
+  }
+
+  void removeAtIndexFromScannedBarcodes(int index) {
+    scannedBarcodes.removeAt(index);
+  }
+
+  void updateScannedBarcodesAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    scannedBarcodes[index] = updateFn(_scannedBarcodes[index]);
+  }
+
+  void insertAtIndexInScannedBarcodes(int index, String value) {
+    scannedBarcodes.insert(index, value);
+  }
+
+  List<int> _scannedQuantities = [];
+  List<int> get scannedQuantities => _scannedQuantities;
+  set scannedQuantities(List<int> value) {
+    _scannedQuantities = value;
+  }
+
+  void addToScannedQuantities(int value) {
+    scannedQuantities.add(value);
+  }
+
+  void removeFromScannedQuantities(int value) {
+    scannedQuantities.remove(value);
+  }
+
+  void removeAtIndexFromScannedQuantities(int index) {
+    scannedQuantities.removeAt(index);
+  }
+
+  void updateScannedQuantitiesAtIndex(
+    int index,
+    int Function(int) updateFn,
+  ) {
+    scannedQuantities[index] = updateFn(_scannedQuantities[index]);
+  }
+
+  void insertAtIndexInScannedQuantities(int index, int value) {
+    scannedQuantities.insert(index, value);
   }
 }

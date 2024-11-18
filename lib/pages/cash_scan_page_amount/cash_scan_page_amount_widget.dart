@@ -76,7 +76,7 @@ class _CashScanPageAmountWidgetState extends State<CashScanPageAmountWidget> {
                 child: Text(
                   'SCAN',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Open Sans',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -296,9 +296,10 @@ class _CashScanPageAmountWidgetState extends State<CashScanPageAmountWidget> {
                                         onTap: () async {
                                           _model.apiResult5xr =
                                               await CashTransactionOneCall.call(
-                                            barcode: FFAppState().singleItem,
-                                            quantity:
-                                                FFAppState().singleQuantity,
+                                            barcodeList:
+                                                FFAppState().scannedBarcodes,
+                                            quantityList:
+                                                FFAppState().scannedQuantities,
                                             cashReceived: double.tryParse(
                                                 _model.textController.text),
                                           );
@@ -327,8 +328,8 @@ class _CashScanPageAmountWidgetState extends State<CashScanPageAmountWidget> {
                                                 return AlertDialog(
                                                   title: const Text(
                                                       'An Error Has Occured.'),
-                                                  content:
-                                                      const Text('Please try again.'),
+                                                  content: const Text(
+                                                      'Please check amount and try again.'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
@@ -342,7 +343,7 @@ class _CashScanPageAmountWidgetState extends State<CashScanPageAmountWidget> {
                                             );
 
                                             context.pushNamed(
-                                                'scan_page_transaction');
+                                                'copy_scan_page_transaction');
                                           }
 
                                           safeSetState(() {});

@@ -74,7 +74,7 @@ class _CashlessScanPageReceiptWidgetState
                 child: Text(
                   'SCAN',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Open Sans',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -158,7 +158,7 @@ class _CashlessScanPageReceiptWidgetState
                           alignment: const AlignmentDirectional(0.0, 0.0),
                           child: FutureBuilder<ApiCallResponse>(
                             future: GetNamesFromBarcodeCall.call(
-                              barcode: FFAppState().singleItem,
+                              barcodeList: FFAppState().scannedBarcodes,
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -234,50 +234,74 @@ class _CashlessScanPageReceiptWidgetState
                                       ],
                                     ),
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 20.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              GetNamesFromBarcodeCall
-                                                  .productName(
+                                  Builder(
+                                    builder: (context) {
+                                      final scannedItems =
+                                          GetNamesFromBarcodeCall.productNames(
                                                 columnGetNamesFromBarcodeResponse
                                                     .jsonBody,
-                                              )?.first,
-                                              'NULL',
+                                              )?.toList() ??
+                                              [];
+
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: scannedItems.length,
+                                        itemBuilder:
+                                            (context, scannedItemsIndex) {
+                                          final scannedItemsItem =
+                                              scannedItems[scannedItemsIndex];
+                                          return Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    scannedItemsItem,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    FFAppState()
+                                                        .scannedQuantities[
+                                                            scannedItemsIndex]
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 60.0))
+                                                    .addToStart(
+                                                        const SizedBox(width: 10.0))
+                                                    .addToEnd(
+                                                        const SizedBox(width: 10.0)),
+                                              ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                          Text(
-                                            FFAppState()
-                                                .singleQuantity
-                                                .toString(),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ]
-                                            .divide(const SizedBox(width: 120.0))
-                                            .addToStart(const SizedBox(width: 1.0))
-                                            .addToEnd(const SizedBox(width: 1.0)),
-                                      ),
-                                    ),
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
                                   Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
@@ -299,6 +323,12 @@ class _CashlessScanPageReceiptWidgetState
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                FFAppState().scannedBarcodes =
+                                                    [];
+                                                FFAppState().scannedQuantities =
+                                                    [];
+                                                safeSetState(() {});
+
                                                 context.pushNamed('scan_page');
                                               },
                                               child: Container(

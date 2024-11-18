@@ -69,7 +69,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                 child: Text(
                   'SCAN',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Open Sans',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -131,68 +131,16 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Not Available'),
-                                  content: const Text(
-                                      'This feature is under development. Check back for latest updates.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            width: 140.0,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF02E083),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                'TRANSACTION',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      color: const Color(0xFF28292A),
-                                      fontSize: 15.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                       Flexible(
                         child: Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('scan_page_transaction');
+                              context.pushNamed('copy_scan_page_transaction');
                             },
                             child: Container(
                               width: 140.0,
@@ -205,7 +153,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                               child: Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
-                                  'QUICK TRANSACTION',
+                                  'TRANSACTION',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

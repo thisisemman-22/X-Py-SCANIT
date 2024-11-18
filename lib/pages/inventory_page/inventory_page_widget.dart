@@ -70,7 +70,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                 child: Text(
                   'INVENTORY',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Open Sans',
                         color: const Color(0xFF02E083),
                         fontSize: 22.0,
                         letterSpacing: 0.0,
@@ -793,8 +793,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                           context)
                                                       .titleSmall
                                                       .override(
-                                                        fontFamily:
-                                                            'Inter Tight',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             const Color(0xFF02E083),
                                                         fontSize: 12.0,
@@ -908,7 +907,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Open Sans',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 12.0,
@@ -1030,7 +1029,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Open Sans',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 12.0,
@@ -1134,7 +1133,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Open Sans',
                                                           color:
                                                               const Color(0xFF02E083),
                                                           fontSize: 12.0,
