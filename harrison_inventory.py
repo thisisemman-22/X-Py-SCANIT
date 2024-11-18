@@ -105,3 +105,28 @@ def get_prices_by_barcodes(cursor, barcodes):
         return {"error": f"Database error: {e}"}
     except Exception as e:
         return {"error": f"An unexpected error occurred: {e}"}
+    
+
+def calculate_total_amount(cursor, barcodes, quantities):
+    """Calculate the total amount for the given barcodes and quantities."""
+    try:
+        cursor.execute('''
+            SELECT barcode, price FROM inventory WHERE barcode IN ({})
+        '''.format(','.join('?' * len(barcodes))), barcodes)
+        results = cursor.fetchall()
+        if not results:
+            return {"error": "No products found for the given barcodes"}
+
+        total_amount = 0
+        barcode_price_map = {barcode: price for barcode, price in results}
+        for barcode, quantity in zip(barcodes, quantities):
+            if barcode in barcode_price_map:
+                total_amount += barcode_price_map[barcode] * quantity
+            else:
+                return {"error": f"Product with barcode {barcode} not found"}
+
+        return {"total_amount": round(total_amount, 2)}
+    except sqlite3.Error as e:
+        return {"error": f"Database error: {e}"}
+    except Exception as e:
+        return {"error": f"An unexpected error occurred: {e}"}

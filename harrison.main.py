@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from harrison_database import connect_db, create_tables
-from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes, get_prices_by_barcodes
+from harrison_inventory import add_product, update_stock, fetch_inventory, get_product_names_by_barcodes, get_prices_by_barcodes, calculate_total_amount
 from harrison_transaction import handle_transaction, generate_reports, notify_low_stock, total_sales, average_transaction_value, most_sold_products, sales_by_date, get_transactions_by_date
 from flask_cors import CORS
 import os
@@ -148,6 +148,23 @@ def get_prices_route():
         return jsonify({"error": "Barcodes parameter is required"}), 400
 
     result = get_prices_by_barcodes(cursor, barcodes)
+    conn.close()  # Close the connection after the operation
+
+    if isinstance(result, dict) and 'error' in result:
+        return jsonify(result), 400
+
+    return jsonify(result), 200
+
+@app.route('/calculate_total', methods=['POST'])
+def calculate_total_route():
+    conn, cursor = connect_db()  # Create a new connection and cursor
+    data = request.json
+    barcodes = data.get('barcodes')
+    quantities = data.get('quantities')
+    if not barcodes or not quantities or len(barcodes) != len(quantities):
+        return jsonify({"error": "Barcodes and quantities must be provided and must have the same length"}), 400
+
+    result = calculate_total_amount(cursor, barcodes, quantities)
     conn.close()  # Close the connection after the operation
 
     if isinstance(result, dict) and 'error' in result:
