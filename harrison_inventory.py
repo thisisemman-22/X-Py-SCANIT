@@ -98,7 +98,7 @@ def get_price_by_barcode(cursor, barcode):
         ''', (barcode,))
         result = cursor.fetchone()
         if result:
-            return {"price": res            git add harrison_inventory.py harrison.main.pyult[0]}
+            return {"price": result[0]}
         else:
             return {"error": "Product not found"}
     except sqlite3.Error as e:
