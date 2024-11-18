@@ -374,7 +374,7 @@ class _TransactionOverviewPageWidgetState
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
+                            10.0, 0.0, 10.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           height: 100.0,
@@ -543,7 +543,7 @@ class _TransactionOverviewPageWidgetState
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 10.0, 0.0),
                                     child: Container(
-                                      width: 0.0,
+                                      width: double.infinity,
                                       height: 110.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
@@ -717,7 +717,7 @@ class _TransactionOverviewPageWidgetState
                                       salesTotal[salesTotalIndex];
                                   return Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
+                                        10.0, 0.0, 10.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 110.0,
