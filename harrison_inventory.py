@@ -82,9 +82,15 @@ def get_product_names_by_barcodes(cursor, barcodes):
     """Fetch product names for the given barcodes."""
     try:
         cursor.execute('''
-            SELECT product_name FROM inventory WHERE barcode IN ({})
+            SELECT barcode, product_name FROM inventory WHERE barcode IN ({})
         '''.format(','.join('?' * len(barcodes))), barcodes)
-        return cursor.fetchall()
+        results = cursor.fetchall()
+        if not results:
+            return {"error": "No products found for the given barcodes"}
+
+        barcode_name_map = {barcode: name for barcode, name in results}
+        product_names = [barcode_name_map.get(barcode, "Product not found") for barcode in barcodes]
+        return product_names
     except sqlite3.Error as e:
         return {"error": f"Database error: {e}"}
     except Exception as e:
