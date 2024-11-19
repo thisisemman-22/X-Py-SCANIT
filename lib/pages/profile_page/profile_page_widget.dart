@@ -224,7 +224,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'TINDAHAN NI JAROM',
+                                                              'X-PY INCORPORATED',
                                                               textAlign:
                                                                   TextAlign.end,
                                                               style: FlutterFlowTheme
@@ -259,7 +259,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'SAGING STORE',
+                                                              'SARI-SARI STORE',
                                                               textAlign:
                                                                   TextAlign.end,
                                                               style: FlutterFlowTheme
@@ -276,7 +276,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         0.0,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .w800,
+                                                                            .w500,
                                                                   ),
                                                             ),
                                                           ),
@@ -410,7 +410,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                     0.0,
                                                                     10.0,
                                                                     0.0,
-                                                                    0.0),
+                                                                    10.0),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -443,7 +443,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
-                                                                          20.0,
+                                                                          0.0,
                                                                           0.0),
                                                                   child: Text(
                                                                     'Bandang Dito Street, Brgy. Pagkaliko sa Kanan, Diyan Lang City, Batangas',
@@ -460,7 +460,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w500,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -469,70 +469,61 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           ],
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Icon(
-                                                                Icons.phone,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                size: 35.0,
-                                                              ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        20.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Icon(
+                                                              Icons.phone,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              size: 35.0,
                                                             ),
-                                                            Flexible(
-                                                              child: Align(
-                                                                alignment:
-                                                                    const AlignmentDirectional(
-                                                                        -1.0,
-                                                                        -1.0),
-                                                                child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          0.0,
-                                                                          20.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    '0923-456-7891',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontSize:
-                                                                              16.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                  ),
+                                                          ),
+                                                          Flexible(
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      -1.0,
+                                                                      -1.0),
+                                                              child: Padding(
+                                                                padding: const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        20.0,
+                                                                        0.0,
+                                                                        20.0,
+                                                                        0.0),
+                                                                child: Text(
+                                                                  '0923-456-7891',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            16.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
                                                                 ),
                                                               ),
                                                             ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
                                                       Padding(
                                                         padding:
@@ -591,7 +582,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w500,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -656,7 +647,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w500,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -722,7 +713,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w500,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -788,7 +779,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
-                                                                              FontWeight.bold,
+                                                                              FontWeight.w500,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -865,7 +856,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           children: [
                                             Align(
                                               alignment: const AlignmentDirectional(
-                                                  -1.0, -1.0),
+                                                  0.0, 0.0),
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -976,7 +967,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.bold,
+                                                                            FontWeight.w600,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1024,7 +1015,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.bold,
+                                                                            FontWeight.w500,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1232,7 +1223,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.bold,
+                                                                            FontWeight.w600,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1319,7 +1310,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.bold,
+                                                                            FontWeight.w600,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1406,7 +1397,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.bold,
+                                                                            FontWeight.w600,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1585,7 +1576,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.bold,
+                                                                            FontWeight.w500,
                                                                       ),
                                                                 ),
                                                               ),

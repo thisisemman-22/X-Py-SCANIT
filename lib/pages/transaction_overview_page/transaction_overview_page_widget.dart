@@ -377,7 +377,7 @@ class _TransactionOverviewPageWidgetState
                             10.0, 0.0, 10.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 90.0,
+                          height: 100.0,
                           decoration: BoxDecoration(
                             color: const Color(0xFF717171),
                             boxShadow: const [
@@ -548,7 +548,7 @@ class _TransactionOverviewPageWidgetState
                                         10.0, 0.0, 10.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 100.0,
+                                      height: 110.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
                                         boxShadow: const [
@@ -724,7 +724,7 @@ class _TransactionOverviewPageWidgetState
                                         10.0, 0.0, 10.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 100.0,
+                                      height: 110.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
                                         boxShadow: const [

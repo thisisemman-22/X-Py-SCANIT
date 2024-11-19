@@ -179,7 +179,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
@@ -274,7 +274,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                       ),
                     ),
                   ]
-                      .divide(const SizedBox(width: 10.0))
+                      .divide(const SizedBox(width: 20.0))
                       .addToStart(const SizedBox(width: 40.0))
                       .addToEnd(const SizedBox(width: 40.0)),
                 ),

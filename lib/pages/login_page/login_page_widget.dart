@@ -190,7 +190,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
                         autofocus: false,
-                        obscureText: false,
+                        obscureText: !_model.passwordVisibility,
                         decoration: InputDecoration(
                           isDense: true,
                           labelStyle:
@@ -235,6 +235,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           filled: true,
                           fillColor:
                               FlutterFlowTheme.of(context).primaryBackground,
+                          suffixIcon: InkWell(
+                            onTap: () => safeSetState(
+                              () => _model.passwordVisibility =
+                                  !_model.passwordVisibility,
+                            ),
+                            focusNode: FocusNode(skipTraversal: true),
+                            child: Icon(
+                              _model.passwordVisibility
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 22,
+                            ),
+                          ),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',

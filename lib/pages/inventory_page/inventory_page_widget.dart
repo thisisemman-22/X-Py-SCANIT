@@ -205,6 +205,7 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                   },
                                                   child: Container(
                                                     width: 100.0,
+                                                    height: 50.0,
                                                     decoration: BoxDecoration(
                                                       color: const Color(0xFF02E083),
                                                       borderRadius:
@@ -215,35 +216,26 @@ class _InventoryPageWidgetState extends State<InventoryPageWidget> {
                                                       alignment:
                                                           const AlignmentDirectional(
                                                               0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0),
-                                                        child: Text(
-                                                          'View All Products',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: const Color(
-                                                                    0xFF28292A),
-                                                                fontSize: 15.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                lineHeight: 1.0,
-                                                              ),
-                                                        ),
+                                                      child: Text(
+                                                        'View All Products',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: const Color(
+                                                                  0xFF28292A),
+                                                              fontSize: 15.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              lineHeight: 1.0,
+                                                            ),
                                                       ),
                                                     ),
                                                   ),

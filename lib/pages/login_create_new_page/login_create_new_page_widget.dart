@@ -183,7 +183,7 @@ class _LoginCreateNewPageWidgetState extends State<LoginCreateNewPageWidget> {
                           controller: _model.textController2,
                           focusNode: _model.textFieldFocusNode2,
                           autofocus: false,
-                          obscureText: false,
+                          obscureText: !_model.passwordVisibility1,
                           decoration: InputDecoration(
                             isDense: true,
                             labelStyle: FlutterFlowTheme.of(context)
@@ -232,6 +232,20 @@ class _LoginCreateNewPageWidgetState extends State<LoginCreateNewPageWidget> {
                             filled: true,
                             fillColor:
                                 FlutterFlowTheme.of(context).primaryBackground,
+                            suffixIcon: InkWell(
+                              onTap: () => safeSetState(
+                                () => _model.passwordVisibility1 =
+                                    !_model.passwordVisibility1,
+                              ),
+                              focusNode: FocusNode(skipTraversal: true),
+                              child: Icon(
+                                _model.passwordVisibility1
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 22,
+                              ),
+                            ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -265,7 +279,7 @@ class _LoginCreateNewPageWidgetState extends State<LoginCreateNewPageWidget> {
                           controller: _model.textController3,
                           focusNode: _model.textFieldFocusNode3,
                           autofocus: false,
-                          obscureText: false,
+                          obscureText: !_model.passwordVisibility2,
                           decoration: InputDecoration(
                             isDense: true,
                             labelStyle: FlutterFlowTheme.of(context)
@@ -314,6 +328,20 @@ class _LoginCreateNewPageWidgetState extends State<LoginCreateNewPageWidget> {
                             filled: true,
                             fillColor:
                                 FlutterFlowTheme.of(context).primaryBackground,
+                            suffixIcon: InkWell(
+                              onTap: () => safeSetState(
+                                () => _model.passwordVisibility2 =
+                                    !_model.passwordVisibility2,
+                              ),
+                              focusNode: FocusNode(skipTraversal: true),
+                              child: Icon(
+                                _model.passwordVisibility2
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 22,
+                              ),
+                            ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
