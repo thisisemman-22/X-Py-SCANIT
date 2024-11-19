@@ -345,24 +345,29 @@ class _CashlessScanPageTransactionReceiptPaymentCopyWidgetState
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                80.0, 0.0, 0.0, 43.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              fillColor: const Color(0xFF717171),
-                              icon: const Icon(
-                                Icons.folder,
-                                color: Colors.white,
-                                size: 30.0,
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  60.0, 0.0, 0.0, 43.0),
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                fillColor: const Color(0xFF717171),
+                                icon: const Icon(
+                                  Icons.folder,
+                                  color: Colors.white,
+                                  size: 30.0,
+                                ),
+                                onPressed: () async {
+                                  context
+                                      .pushNamed('transaction_overview_page');
+                                },
                               ),
-                              onPressed: () async {
-                                context.pushNamed('transaction_overview_page');
-                              },
                             ),
                           ),
                         ),

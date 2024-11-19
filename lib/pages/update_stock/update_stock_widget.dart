@@ -383,6 +383,7 @@ class _UpdateStockWidgetState extends State<UpdateStockWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          var shouldSetState = false;
                                           var confirmDialogResponse =
                                               await showDialog<bool>(
                                                     context: context,
@@ -416,22 +417,61 @@ class _UpdateStockWidgetState extends State<UpdateStockWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            await UpdateStockCall.call(
+                                            _model.updateStockAPI =
+                                                await UpdateStockCall.call(
                                               barcode:
                                                   _model.textController1.text,
                                               stock: int.tryParse(
                                                   _model.textController2.text),
                                             );
 
-                                            context.pushNamed('inventory_page');
+                                            shouldSetState = true;
+                                            if ((_model.updateStockAPI
+                                                    ?.succeeded ??
+                                                true)) {
+                                              safeSetState(() {
+                                                _model.textController1?.clear();
+                                                _model.textController2?.clear();
+                                              });
+                                              HapticFeedback.lightImpact();
 
-                                            safeSetState(() {
-                                              _model.textController1?.clear();
-                                              _model.textController2?.clear();
-                                            });
-                                            HapticFeedback.lightImpact();
+                                              context
+                                                  .pushNamed('inventory_page');
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: const Text('Error'),
+                                                    content: Text(
+                                                        valueOrDefault<String>(
+                                                      (_model.updateStockAPI
+                                                                  ?.jsonBody ??
+                                                              '')
+                                                          .toString(),
+                                                      'An error has occured. Please try again.',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
                                           } else {
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
                                             return;
+                                          }
+
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
                                           }
                                         },
                                         child: Container(

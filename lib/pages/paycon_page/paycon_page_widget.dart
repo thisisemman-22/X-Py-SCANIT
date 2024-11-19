@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shake/shake.dart';
 import 'paycon_page_model.dart';
 export 'paycon_page_model.dart';
@@ -32,7 +33,9 @@ class _PayconPageWidgetState extends State<PayconPageWidget> {
         }
         shakeActionInProgress = true;
         try {
-          context.safePop();
+          HapticFeedback.lightImpact();
+
+          context.pushNamed('scan_page');
         } finally {
           shakeActionInProgress = false;
         }
@@ -98,7 +101,7 @@ class _PayconPageWidgetState extends State<PayconPageWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 70.0),
                       child: Text(
-                        'Shake your device to complete!',
+                        'Completing payment connection...\n\nTap devices to complete',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
                               fontFamily: 'Poppins',

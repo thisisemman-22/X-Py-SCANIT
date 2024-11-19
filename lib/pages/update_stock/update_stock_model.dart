@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'update_stock_widget.dart' show UpdateStockWidget;
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class UpdateStockModel extends FlutterFlowModel<UpdateStockWidget> {
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   var scannedBarcode = '';
+  // Stores action output result for [Backend Call - API (Update Stock)] action in Container widget.
+  ApiCallResponse? updateStockAPI;
 
   @override
   void initState(BuildContext context) {}

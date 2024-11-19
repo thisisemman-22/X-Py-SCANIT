@@ -314,10 +314,15 @@ class _CashScanPageAmountWidgetState extends State<CashScanPageAmountWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: const Text(
-                                                    'An Error Has Occured.'),
-                                                content: const Text(
-                                                    'Please check amount and try again.'),
+                                                title: const Text('Error'),
+                                                content:
+                                                    Text(valueOrDefault<String>(
+                                                  (_model.apiResult5xr
+                                                              ?.jsonBody ??
+                                                          '')
+                                                      .toString(),
+                                                  'An error has occured. Please try again.',
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -329,9 +334,6 @@ class _CashScanPageAmountWidgetState extends State<CashScanPageAmountWidget> {
                                               );
                                             },
                                           );
-
-                                          context.pushNamed(
-                                              'copy_scan_page_transaction');
                                         }
 
                                         safeSetState(() {});

@@ -558,6 +558,7 @@ class _InventoryViewAllAddItemPageWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          var shouldSetState = false;
                                           var confirmDialogResponse =
                                               await showDialog<bool>(
                                                     context: context,
@@ -591,7 +592,8 @@ class _InventoryViewAllAddItemPageWidgetState
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            await AddProductCall.call(
+                                            _model.addProductAPI =
+                                                await AddProductCall.call(
                                               productName:
                                                   _model.textController2.text,
                                               stock: int.tryParse(
@@ -602,17 +604,55 @@ class _InventoryViewAllAddItemPageWidgetState
                                                   _model.textController1.text,
                                             );
 
-                                            context.pushNamed('inventory_page');
+                                            shouldSetState = true;
+                                            if ((_model
+                                                    .addProductAPI?.succeeded ??
+                                                true)) {
+                                              safeSetState(() {
+                                                _model.textController2?.clear();
+                                                _model.textController3?.clear();
+                                                _model.textController4?.clear();
+                                                _model.textController1?.clear();
+                                              });
+                                              HapticFeedback.lightImpact();
 
-                                            safeSetState(() {
-                                              _model.textController2?.clear();
-                                              _model.textController3?.clear();
-                                              _model.textController4?.clear();
-                                              _model.textController1?.clear();
-                                            });
-                                            HapticFeedback.heavyImpact();
+                                              context
+                                                  .pushNamed('inventory_page');
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: const Text('Error'),
+                                                    content: Text(
+                                                        valueOrDefault<String>(
+                                                      (_model.addProductAPI
+                                                                  ?.jsonBody ??
+                                                              '')
+                                                          .toString(),
+                                                      'An error has occured. Please try again.',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
                                           } else {
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
                                             return;
+                                          }
+
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
                                           }
                                         },
                                         child: Container(

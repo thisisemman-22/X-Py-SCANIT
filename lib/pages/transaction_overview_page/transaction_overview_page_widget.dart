@@ -377,7 +377,7 @@ class _TransactionOverviewPageWidgetState
                             10.0, 0.0, 10.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 100.0,
+                          height: 90.0,
                           decoration: BoxDecoration(
                             color: const Color(0xFF717171),
                             boxShadow: const [
@@ -404,19 +404,23 @@ class _TransactionOverviewPageWidgetState
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Average Value Per Transaction:',
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              fontSize: 22.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 5.0),
+                                        child: Text(
+                                          'Average Value Per Transaction:',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                fontSize: 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
                                       ),
                                       FutureBuilder<ApiCallResponse>(
                                         future:
@@ -460,7 +464,7 @@ class _TransactionOverviewPageWidgetState
                                                 .override(
                                                   fontFamily: 'Outfit',
                                                   color: const Color(0xFF02E083),
-                                                  fontSize: 26.0,
+                                                  fontSize: 22.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -544,7 +548,7 @@ class _TransactionOverviewPageWidgetState
                                         10.0, 0.0, 10.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 110.0,
+                                      height: 100.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
                                         boxShadow: const [
@@ -583,7 +587,7 @@ class _TransactionOverviewPageWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 24.0,
+                                                          fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -628,7 +632,7 @@ class _TransactionOverviewPageWidgetState
                                                           fontFamily: 'Outfit',
                                                           color:
                                                               const Color(0xFF02E083),
-                                                          fontSize: 26.0,
+                                                          fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -720,7 +724,7 @@ class _TransactionOverviewPageWidgetState
                                         10.0, 0.0, 10.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 110.0,
+                                      height: 100.0,
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF717171),
                                         boxShadow: const [
@@ -758,7 +762,7 @@ class _TransactionOverviewPageWidgetState
                                                           fontFamily: 'Outfit',
                                                           color:
                                                               const Color(0xFF02E083),
-                                                          fontSize: 24.0,
+                                                          fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -798,7 +802,7 @@ class _TransactionOverviewPageWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .alternate,
-                                                          fontSize: 26.0,
+                                                          fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,

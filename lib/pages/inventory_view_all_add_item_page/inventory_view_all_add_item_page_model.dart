@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'inventory_view_all_add_item_page_widget.dart'
     show InventoryViewAllAddItemPageWidget;
@@ -24,6 +25,8 @@ class InventoryViewAllAddItemPageModel
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
   var scannedBarcode = '';
+  // Stores action output result for [Backend Call - API (Add Product)] action in Container widget.
+  ApiCallResponse? addProductAPI;
 
   @override
   void initState(BuildContext context) {}

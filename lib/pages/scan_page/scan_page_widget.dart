@@ -189,7 +189,16 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onLongPress: () async {
-                          context.pushNamed('paycon_page');
+                          context.goNamed(
+                            'paycon_page',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           width: 140.0,
@@ -226,7 +235,16 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onLongPress: () async {
-                          context.pushNamed('sync_page');
+                          context.goNamed(
+                            'sync_page',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           width: 140.0,
