@@ -133,8 +133,8 @@ class _CashlessScanPageReceiptWidgetState
                     Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            0.0, 10.0, 0.0, 80.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 10.0,
