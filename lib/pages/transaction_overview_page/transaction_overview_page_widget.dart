@@ -164,7 +164,10 @@ class _TransactionOverviewPageWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFF28292A),
@@ -598,7 +601,8 @@ class _TransactionOverviewPageWidgetState
                                                       SalesByDateCall.date(
                                                         listViewSalesByDateResponse
                                                             .jsonBody,
-                                                      )?[salesTotalIndex],
+                                                      )?.elementAtOrNull(
+                                                          salesTotalIndex),
                                                       '2024-06-09',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -790,7 +794,8 @@ class _TransactionOverviewPageWidgetState
                                                               .amountSold(
                                                         listViewMostSoldProductsResponse
                                                             .jsonBody,
-                                                      )?[salesTotalIndex])
+                                                      )?.elementAtOrNull(
+                                                              salesTotalIndex))
                                                           ?.toString(),
                                                       '0',
                                                     ),

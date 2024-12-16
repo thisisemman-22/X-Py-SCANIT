@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/counter_widget.dart';
+import '/components/enter_barcode_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -42,7 +43,10 @@ class _CopyScanPageTransactionWidgetState
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFF28292A),
@@ -304,9 +308,10 @@ class _CopyScanPageTransactionWidgetState
                                                                 valueOrDefault<
                                                                     String>(
                                                                   FFAppState()
-                                                                      .scannedQuantities[
-                                                                          scannedBarcodesIndex]
-                                                                      .toString(),
+                                                                      .scannedQuantities
+                                                                      .elementAtOrNull(
+                                                                          scannedBarcodesIndex)
+                                                                      ?.toString(),
                                                                   '0',
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
@@ -544,71 +549,186 @@ class _CopyScanPageTransactionWidgetState
                   ),
                   Align(
                     alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 100.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 1.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        _model.apiResult7d4 =
+                                            await CashlessTransactionCall.call(
+                                          barcodeList:
+                                              FFAppState().scannedBarcodes,
+                                          quantityList:
+                                              FFAppState().scannedQuantities,
+                                        );
+
+                                        if ((_model.apiResult7d4?.succeeded ??
+                                            true)) {
+                                          FFAppState().qrCodeURL =
+                                              CashlessTransactionCall.qrlink(
+                                            (_model.apiResult7d4?.jsonBody ??
+                                                ''),
+                                          )!;
+                                          safeSetState(() {});
+
+                                          context.pushNamed(
+                                              'cashless_scan_page_transaction_receipt_paymentCopy');
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: const Text('Error'),
+                                                content:
+                                                    Text(valueOrDefault<String>(
+                                                  (_model.apiResult7d4
+                                                              ?.jsonBody ??
+                                                          '')
+                                                      .toString(),
+                                                  'An error has occured. Please try again.',
+                                                )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+
+                                        safeSetState(() {});
+                                      },
+                                      child: Container(
+                                        width: 140.0,
+                                        height: 50.0,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFF02E083),
+                                          borderRadius:
+                                              BorderRadius.circular(24.0),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Text(
+                                            'QRPH',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: const Color(0xFF28292A),
+                                                  fontSize: 15.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context
+                                          .pushNamed('cash_scan_page_amount');
+                                    },
+                                    child: Container(
+                                      width: 140.0,
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xFF02E083),
+                                        borderRadius:
+                                            BorderRadius.circular(24.0),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          'Cash',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: const Color(0xFF28292A),
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ].divide(const SizedBox(width: 20.0)),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Builder(
+                              builder: (context) => Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    _model.apiResult7d4 =
-                                        await CashlessTransactionCall.call(
-                                      barcodeList: FFAppState().scannedBarcodes,
-                                      quantityList:
-                                          FFAppState().scannedQuantities,
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: const AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              FocusScope.of(dialogContext)
+                                                  .unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
+                                            child: const EnterBarcodeWidget(),
+                                          ),
+                                        );
+                                      },
                                     );
 
-                                    if ((_model.apiResult7d4?.succeeded ??
-                                        true)) {
-                                      FFAppState().qrCodeURL =
-                                          CashlessTransactionCall.qrlink(
-                                        (_model.apiResult7d4?.jsonBody ?? ''),
-                                      )!;
-                                      safeSetState(() {});
-
-                                      context.pushNamed(
-                                          'cashless_scan_page_transaction_receipt_paymentCopy');
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Error'),
-                                            content:
-                                                Text(valueOrDefault<String>(
-                                              (_model.apiResult7d4?.jsonBody ??
-                                                      '')
-                                                  .toString(),
-                                              'An error has occured. Please try again.',
-                                            )),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    }
-
-                                    safeSetState(() {});
+                                    context
+                                        .goNamed('copy_scan_page_transaction');
                                   },
                                   child: Container(
-                                    width: 140.0,
+                                    width: 300.0,
                                     height: 50.0,
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF02E083),
@@ -616,192 +736,140 @@ class _CopyScanPageTransactionWidgetState
                                     ),
                                     child: Align(
                                       alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        'QRPH',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: const Color(0xFF28292A),
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Enter Barcode Manually',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                              InkWell(
+                            ),
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Builder(
+                              builder: (context) => InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('cash_scan_page_amount');
+                                  _model.barcoded =
+                                      await FlutterBarcodeScanner.scanBarcode(
+                                    '#C62828', // scanning line color
+                                    'Cancel', // cancel button text
+                                    true, // whether to show the flash icon
+                                    ScanMode.BARCODE,
+                                  );
+
+                                  await showDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: const CounterWidget(),
+                                        ),
+                                      );
+                                    },
+                                  );
+
+                                  FFAppState()
+                                      .addToScannedBarcodes(_model.barcoded);
+                                  safeSetState(() {});
+
+                                  safeSetState(() {});
                                 },
                                 child: Container(
-                                  width: 140.0,
-                                  height: 50.0,
+                                  width: 300.0,
+                                  height: 55.0,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFF02E083),
                                     borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   child: Align(
                                     alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Cash',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: const Color(0xFF28292A),
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 8.0,
+                                              buttonSize: 66.0,
+                                              fillColor: const Color(0xFF02E083),
+                                              icon: const Icon(
+                                                Icons.qr_code_scanner_outlined,
+                                                color: Colors.black,
+                                                size: 40.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
+                                            ),
                                           ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Text(
+                                            'Scan Barcode',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(width: 30.0)),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 100.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Flexible(
-                                  child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Builder(
-                                      builder: (context) => Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 20.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            _model.barcoded =
-                                                await FlutterBarcodeScanner
-                                                    .scanBarcode(
-                                              '#C62828', // scanning line color
-                                              'Cancel', // cancel button text
-                                              true, // whether to show the flash icon
-                                              ScanMode.BARCODE,
-                                            );
-
-                                            await showDialog(
-                                              barrierDismissible: false,
-                                              context: context,
-                                              builder: (dialogContext) {
-                                                return Dialog(
-                                                  elevation: 0,
-                                                  insetPadding: EdgeInsets.zero,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  child: GestureDetector(
-                                                    onTap: () => FocusScope.of(
-                                                            dialogContext)
-                                                        .unfocus(),
-                                                    child: const CounterWidget(),
-                                                  ),
-                                                );
-                                              },
-                                            );
-
-                                            FFAppState().addToScannedBarcodes(
-                                                _model.barcoded);
-                                            safeSetState(() {});
-
-                                            safeSetState(() {});
-                                          },
-                                          child: Container(
-                                            width: 200.0,
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFF02E083),
-                                              borderRadius:
-                                                  BorderRadius.circular(24.0),
-                                            ),
-                                            child: Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            -1.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 8.0,
-                                                        buttonSize: 66.0,
-                                                        fillColor:
-                                                            const Color(0xFF02E083),
-                                                        icon: const Icon(
-                                                          Icons
-                                                              .qr_code_scanner_outlined,
-                                                          color: Colors.black,
-                                                          size: 40.0,
-                                                        ),
-                                                        onPressed: () {
-                                                          print(
-                                                              'IconButton pressed ...');
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'Scan Barcode',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

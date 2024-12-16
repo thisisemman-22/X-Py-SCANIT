@@ -37,7 +37,10 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFF28292A),
@@ -538,7 +541,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                                                     valueOrDefault<String>(
                                                                                       TransactionsByDateCall.transactionID(
                                                                                         listViewTransactionsByDateResponse.jsonBody,
-                                                                                      )?[mgaAnakIndex],
+                                                                                      )?.elementAtOrNull(mgaAnakIndex),
                                                                                       'VRSTLSRT1',
                                                                                     ),
                                                                                     style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -556,7 +559,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                                                     valueOrDefault<String>(
                                                                                       TransactionsByDateCall.paymentMethod(
                                                                                         listViewTransactionsByDateResponse.jsonBody,
-                                                                                      )?[mgaAnakIndex],
+                                                                                      )?.elementAtOrNull(mgaAnakIndex),
                                                                                       'QRPH',
                                                                                     ),
                                                                                     style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -578,7 +581,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                                                             formatNumber(
                                                                               TransactionsByDateCall.totalTransactionAmount(
                                                                                 listViewTransactionsByDateResponse.jsonBody,
-                                                                              )?[mgaAnakIndex],
+                                                                              )?.elementAtOrNull(mgaAnakIndex),
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.automatic,
                                                                               currency: 'P',

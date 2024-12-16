@@ -33,9 +33,9 @@ class _SyncPageWidgetState extends State<SyncPageWidget> {
         }
         shakeActionInProgress = true;
         try {
-          HapticFeedback.lightImpact();
-
           context.pushNamed('scan_page');
+
+          HapticFeedback.lightImpact();
         } finally {
           shakeActionInProgress = false;
         }
@@ -55,7 +55,10 @@ class _SyncPageWidgetState extends State<SyncPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
