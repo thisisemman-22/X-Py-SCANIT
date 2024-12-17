@@ -8,7 +8,7 @@ PSEUDOCODE
         FROM flask_cors IMPORT CORS
         IMPORT os
 
-        SET app = Flask(__name__)
+        SET AND CALL app = Flask(__name__)
         CALL CORS(app)
 
         SET AND CALL conn, cursor = connect_db()
@@ -23,7 +23,7 @@ PSEUDOCODE
             SET AND CALL stock = data.get('stock')
             SET AND CALL price = data.get('price')
             SET AND CALL barcode = data.get('barcode')
-            SET result = add_product(cursor, conn, product_name, stock, price, barcode)
+            SET AND CALL result = add_product(cursor, conn, product_name, stock, price, barcode)
             CALL conn.close()
             RETURN jsonify(result), 201 IF 'message' IN result ELSE 400
         END FUNCTION
@@ -34,7 +34,7 @@ PSEUDOCODE
             SET data = request.json
             SET AND CALL barcode = data.get('barcode')
             SET AND CALL new_stock = data.get('new_stock')
-            SET result = update_stock(cursor, conn, barcode, new_stock)
+            SET AND CALL result = update_stock(cursor, conn, barcode, new_stock)
             CALL conn.close()
             RETURN jsonify(result), 200 IF 'message' IN result ELSE 400
         END FUNCTION
